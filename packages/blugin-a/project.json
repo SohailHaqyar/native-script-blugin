@@ -1,0 +1,64 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/blugin-a",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/blugin-a",
+        "tsConfig": "packages/blugin-a/tsconfig.json",
+        "packageJson": "packages/blugin-a/package.json",
+        "main": "packages/blugin-a/index.d.ts",
+        "assets": [
+          "packages/blugin-a/*.md",
+          "packages/blugin-a/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/blugin-a/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts blugin-a"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/blugin-a"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages blugin-a"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/blugin-a/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

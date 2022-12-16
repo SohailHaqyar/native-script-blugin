@@ -55,12 +55,19 @@ module.exports = {
       },
     },
     '⚙️': {
-      script: `npx cowsay "@nativescript/* packages will keep your ⚙️ cranking"`,
-      description: '_____________  @nativescript/*  _____________',
+      script: `npx cowsay "@salient-sys/* packages will keep your ⚙️ cranking"`,
+      description: '_____________  @salient-sys/*  _____________',
     },
     // packages
     // build output is always in dist/packages
-    '@nativescript': {
+    '@salient-sys': {
+      // @salient-sys/blugin-a
+      'blugin-a': {
+        build: {
+          script: 'nx run blugin-a:build.all',
+          description: '@salient-sys/blugin-a: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -71,8 +78,12 @@ module.exports = {
       description: '_____________  Focus (VS Code supported)  _____________',
     },
     focus: {
+      'blugin-a': {
+        script: 'nx run blugin-a:focus',
+        description: 'Focus on @salient-sys/blugin-a',
+      },
       reset: {
-        script: 'nx g @nativescript/plugin-tools:focus-packages',
+        script: 'nx g @salient-sys/plugin-tools:focus-packages',
         description: 'Reset Focus',
       },
     },

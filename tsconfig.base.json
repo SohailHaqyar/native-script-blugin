@@ -20,7 +20,9 @@
       }
     ],
     "paths": {
-      "@demo/shared": ["tools/demo/index.ts"]
+      "@demo/shared": ["tools/demo/index.ts"],
+      "@salient-sys/*": ["packages/*"],
+      "@salient-sys/blugin-a": ["packages/blugin-a/index.d.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

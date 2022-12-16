@@ -1,7 +1,8 @@
 {
   "main": "./src/main.ts",
   "dependencies": {
-    "@nativescript/core": "file:../../node_modules/@nativescript/core"
+    "@nativescript/core": "file:../../node_modules/@nativescript/core",
+    "@salient-sys/blugin-a": "file:../../dist/packages/blugin-a"
   },
   "devDependencies": {
     "@nativescript/android": "~8.3.0",
